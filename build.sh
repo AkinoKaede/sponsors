@@ -1,1 +1,1 @@
-npx sponsorkit
+npx sponsorkit --outputDir=.
