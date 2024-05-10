@@ -1,55 +1,56 @@
-import { BadgePreset, defineConfig, presets } from 'sponsorkit'
-
-const past: BadgePreset = {
-  avatar: {
-    size: 20,
-  },
-  boxWidth: 22,
-  boxHeight: 22,
-  container: {
-    sidePadding: 35,
-  },
-}
+import {defineConfig, tierPresets } from 'sponsorkit'
 
 export default defineConfig({
   tiers: [
     {
       title: 'Past Sponsors',
       monthlyDollars: -1,
-      preset: past,
+      preset: tierPresets.xs,
     },
     {
       title: 'Backers',
-      preset: presets.small,
+      preset: tierPresets.small,
     },
     {
       title: 'Sponsors',
       monthlyDollars: 10,
-      preset: {
-        avatar: {
-          size: 42,
-        },
-        boxWidth: 52,
-        boxHeight: 52,
-        container: {
-          sidePadding: 30,
-        },
-      }
+      preset: tierPresets.base,
     },
     {
       title: 'Silver Sponsors',
       monthlyDollars: 30,
-      preset: presets.medium,
+      preset: tierPresets.medium,
     },
     {
       title: 'Gold Sponsors',
       monthlyDollars: 50,
-      preset: presets.large,
+      preset: tierPresets.large,
     },
     {
       title: 'Platinum Sponsors',
       monthlyDollars: 100,
-      preset: presets.xl,
+      preset: tierPresets.xl,
     },
-  ]
+  ],
+
+  sponsorsAutoMerge: true,
+
+  renders: [
+    {
+      name: 'sponsors',
+      width: 800,
+    },
+    {
+      name: 'sponsors.wide',
+      width: 1000,
+      formats: ['svg', 'png'],
+    },
+    {
+      renderer: 'circles',
+      name: 'sponsors.circles',
+      width: 1000,
+      formats: ['svg', 'png'],
+      includePastSponsors: true,
+    },
+  ],
 })
